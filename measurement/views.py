@@ -7,3 +7,6 @@ def index(request):
     context = {'customers': customers}
     return render(request, 'measurement/home.html', context)
 
+def customerDetail(request, pk):
+    customer = Customer.objects.get(pk=pk)
+    return render(request, 'measurement/detail.html', {'customer':customer})

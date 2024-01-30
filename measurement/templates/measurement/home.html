@@ -10,7 +10,8 @@
         <th scope="col">ADDRESS</th>
         <th scope="col">PHONE NUMBER</th>
         <th scope="col">EMAIL</th>
-        <th scope="col">DATE JIONED</th>
+        <th scope="col">DATE JOINED</th>
+        <th scope="col">DETAIL</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,10 @@
         <td>{{customer.phone_number}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.joined_date}}</td>
+        <td><button type="button" class="btn btn-secondary">
+            <a class="" href="{% url 'customer-detail' customer.pk %}">
+                Detail
+          </a></button></td>
       </tr>
       {% endfor %}
     </tbody>
