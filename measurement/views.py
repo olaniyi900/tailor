@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from .models import Customer
 from .forms import CustomerForm
 
@@ -30,7 +31,7 @@ def customerCreate(request):
             customer.save()
             
     
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('index'))
     else:
 
         form = CustomerForm()

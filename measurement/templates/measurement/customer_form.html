@@ -3,7 +3,17 @@
 {% block content %}
     <form method="POST", action="{% url 'customer-create' %}">
         {% csrf_token %}
-        {{ form }}
+        {% for field in form %}
+        <div class="form-group mb-3">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+          <p class="help" id="{{ field.auto_id }}_helptext">
+            {{ field.help_text|safe }}
+          </p>
+        {% endif %}
+    </div>
+    {% endfor %}
         <button class="btn btn-lg btn-primary" type="submit">Submit</button>
     </form>
 {% endblock content %}
