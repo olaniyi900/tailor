@@ -1,11 +1,24 @@
+from django.forms import ModelForm
 from django import forms
+from .models import Customer
 
 
 
-class CustomerForm(forms.Form):
-    first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={"class": "form-control"})) 
-    last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={"class": "form-control"}))
-    adress = forms.CharField(widget=forms.Textarea(attrs={"class": "form-control"}))
-    phone_number = forms.IntegerField(widget=forms.NumberInput(attrs={"class": "form-control"}))
-    email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={"class": "form-control"}))
-    joined_date = forms.DateField(widget=forms.DateInput(attrs={"class": "form-control"}))
+class CustomerForm(ModelForm):
+    
+    class Meta:
+        model =  Customer
+        fields = ['first_name', 'last_name', 'adress', 'phone_number', 'email', 'joined_date']
+        widgets = {
+            'joined_date': forms.DateInput(attrs={'type': 'date'})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["first_name"].widget.attrs.update({"class": "form-control"})
+        self.fields["last_name"].widget.attrs.update({"class": "form-control"})
+        self.fields["adress"].widget.attrs.update({"class": "form-control"})
+        self.fields["phone_number"].widget.attrs.update({"class": "form-control"})
+        self.fields["email"].widget.attrs.update({"class": "form-control"})
+        self.fields["joined_date"].widget.attrs.update({"class": "form-control"})
+        

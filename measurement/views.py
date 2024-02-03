@@ -19,39 +19,32 @@ def customerCreate(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            adress = form.cleaned_data['adress']
-            phone_number = form.cleaned_data['phone_number']
-            email =  form.cleaned_data['email']
-            joined_date  = form.cleaned_data['joined_date']
-            
-            customer = Customer(first_name= first_name, last_name= last_name, adress = adress, phone_number = phone_number,  email = email, 
-                joined_date = joined_date)
-            customer.save()
-            
-    
-            return HttpResponseRedirect(reverse('index'))
+               
+            form.save()
+        
+            return HttpResponseRedirect(reverse('measurement:index',))
     else:
 
         form = CustomerForm()
     return render(request, 'measurement/customer_form.html', {'form':form})
 
 def customerUpdate(request, pk):
-    data = Customer.objects.get(pk=pk)
-    #data = get_object_or_404(Customer, pk=pk)
-    form = CustomerForm(data)
-    #form = CustomerForm(request.POST, instance=data)
+    
+    customer = get_object_or_404(Customer, pk=pk)
+   
     if request.method == 'POST':
-        
-        form = CustomerForm(request.POST, instance=data)
+        form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
-            #form.clean_data
-            #print(form.clean_data)
-            print(form)
+
             form.save()
             return HttpResponseRedirect(reverse('measurement:index'))
+    else:
+        form = CustomerForm(instance=customer)
+        return render(request, 'measurement/customer_form.html', {'form':form})
     
-        
-    return render(request, 'measurement/update.html', {'form':form})
+
+def customerDelete(request, pk):
+    customer = Customer.objects.get(pk=pk)
+    customer.delete()
+    return HttpResponseRedirect(reverse('measurement:index'))
 
