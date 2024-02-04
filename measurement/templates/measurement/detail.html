@@ -8,4 +8,36 @@
         <p class="card-text">{{ customer.adress }}</p>
         </div>
     </div>
+    
+    <div class='ml-3'>
+        <h4 class='ml-5'>Clothe</h4>
+       <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Style</th>
+            <th scope="col">Price</th>
+            <th scope="col">Deposit</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Length</th>
+            <th scope="col">Waist</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for c in clothes  %}
+          <tr>
+            <th scope="row">{{c.id}}</th>
+            <td>{{c.style}}</td>
+            <td>${{c.price_charge}}</td>
+            <td>${{c.deposit}}</td>
+            <td>${{c.balance}}</td>
+            <td>{{c.length}}</td>
+            <td>{{c.waist}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+     
+    </div>
+   
 {% endblock content %}

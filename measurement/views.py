@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .models import Customer
+from .models import Customer, Clothe
 from .forms import CustomerForm
 
 # Create your views here.
@@ -12,7 +12,9 @@ def index(request):
 
 def customerDetail(request, pk):
     customer = Customer.objects.get(pk=pk)
-    return render(request, 'measurement/detail.html', {'customer':customer})
+    clothes = Clothe.objects.all().filter(customer=customer.id)
+    context = {'customer':customer, 'clothes': clothes}
+    return render(request, 'measurement/detail.html', context)
 
 
 def customerCreate(request):
