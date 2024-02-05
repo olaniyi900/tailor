@@ -1,8 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Customer, Clothe
 from .forms import CustomerForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 def index(request):
@@ -49,4 +50,11 @@ def customerDelete(request, pk):
     customer = Customer.objects.get(pk=pk)
     customer.delete()
     return HttpResponseRedirect(reverse('measurement:index'))
+
+
+class ClotheCreateView(CreateView):
+    model = Clothe
+    template_name = 'measurement/customer_form.html'
+    success_url = reverse_lazy('measurement:index')
+    fields = ['customer', 'style', 'price_charge', 'deposit', 'length', 'waist']
 

@@ -9,6 +9,6 @@ urlpatterns = [
     path('customer/create/', views.customerCreate, name='customer-create'),
     path('customer/update/<int:pk>/', views.customerUpdate, name='customer-update'),
     path('customer/delete/<int:pk>/', views.customerDelete, name='customer-delete'),
-    
+    path('clothe/create/', views.ClotheCreateView.as_view(), name='clothe-create'),
 
 ]

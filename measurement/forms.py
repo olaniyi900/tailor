@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Customer
+from .models import Customer, Clothe
 
 
 
@@ -21,4 +21,10 @@ class CustomerForm(ModelForm):
         self.fields["phone_number"].widget.attrs.update({"class": "form-control"})
         self.fields["email"].widget.attrs.update({"class": "form-control"})
         self.fields["joined_date"].widget.attrs.update({"class": "form-control"})
+
+
+class ClotheForm(ModelForm):
+    class Meta:
+        model = Clothe
+        fields = ['customer', 'style', 'price_charge', 'deposit', 'length', 'waist']
         
