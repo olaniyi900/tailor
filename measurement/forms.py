@@ -27,18 +27,18 @@ class ClotheForm(ModelForm):
     class Meta:
         model = Clothe
         fields = ['customer', 'style', 'price_charge', 'deposit', 'length', 'waist']
-        '''
+    
         widgets = {
             'customer': forms.Select(attrs={"class": "form-control"}),
-            'sytle': forms.TextInput(attrs={"class": "form-control"}),
+            'style': forms.TextInput(attrs={"class": "form-control"}),
             'price_charge': forms.NumberInput(attrs={"class": "form-control"}),
             'deposit': forms.NumberInput(attrs={"class": "form-control"}),
             'balance': forms.NumberInput(attrs={"class": "form-control"}),
-            'height': forms.NumberInput(attrs={"class": "form-control"}),
+            'length': forms.NumberInput(attrs={"class": "form-control"}),
             'waist': forms.NumberInput(attrs={"class": "form-control"}),
         } 
-'''
 
+    '''
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["customer"].widget.attrs.update({"class": "form-control"})
@@ -47,3 +47,6 @@ class ClotheForm(ModelForm):
         self.fields["deposit"].widget.attrs.update({"class": "form-control"}) 
         self.fields["length"].widget.attrs.update({"class": "form-control"})
         self.fields["waist"].widget.attrs.update({"class": "form-control"}) 
+
+
+'''
