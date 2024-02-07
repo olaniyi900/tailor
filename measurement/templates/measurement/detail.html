@@ -43,7 +43,7 @@ clothe list view  for each associated customer
                 <a class="btn btn-success" href="{% url 'measurement:clothe-update' c.pk %}">Update</a> 
            </td>
            <td>
-            <a class="btn btn-success" href="#">Delete</a>
+            <a class="btn btn-danger" href="{% url 'measurement:clothe-delete' c.pk %}">Delete</a>
         </td>
           </tr>
           {% endfor %}

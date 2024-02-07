@@ -67,6 +67,11 @@ class ClotheUpdate(UpdateView):
     template_name = 'measurement/customer_form.html'
     success_url = reverse_lazy('measurement:index')
 
+
+class ClotheDeleteView(DeleteView):
+    model = Clothe
+    
+    success_url = reverse_lazy('measurement:index')
     
 
     
