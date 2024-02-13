@@ -32,3 +32,11 @@ class LoginForm(AuthenticationForm):
             
             'password': forms.PasswordInput(attrs={"class": "form-control"})
         }
+
+
+
+
+
+# class AuthenticationFormWithInactiveUsersOkay(AuthenticationForm):
+#     def confirm_login_allowed(self, user):
+#         pass

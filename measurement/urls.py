@@ -12,5 +12,6 @@ urlpatterns = [
     path('clothe/create/', views.ClotheCreateView.as_view(), name='clothe-create'),
     path('clothe/update/<int:pk>/', views.ClotheUpdate.as_view(), name='clothe-update'),
     path('clothe/<int:pk>/delete/', views.ClotheDeleteView.as_view(), name='clothe-delete'),
+    path('about', views.about, name='about'),
 
 ]

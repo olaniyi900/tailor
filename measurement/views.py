@@ -74,4 +74,7 @@ class ClotheDeleteView(DeleteView):
     success_url = reverse_lazy('measurement:index')
     
 
+def about(request):
+    return render(request, 'measurement/about.html')
+
     
