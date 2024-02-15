@@ -23,15 +23,25 @@ class RegisterForm(UserCreationForm):
 
         
 class LoginForm(AuthenticationForm):
+    # overiding the default authetication form username and password to add class for css
+    username = forms.CharField(
+        label="Username",
+        widget=forms.TextInput(attrs={'class':'form-control', 'type':'text', 'placeholder':'Username'}),
+    )
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'placeholder':'Enter Password'}),
+    )
+
     class Meta:
         
         fields = ['username', 'password']
 
-        widgets = {
-            'username': forms.TextInput(attrs={"class": "form-control"}),
+        # widgets = {
+        #     'username': forms.TextInput(attrs={"class": "form-control"}),
             
-            'password': forms.PasswordInput(attrs={"class": "form-control"})
-        }
+        #     'password': forms.PasswordInput(attrs={"class": "form-control"})
+        # }
 
 
 
